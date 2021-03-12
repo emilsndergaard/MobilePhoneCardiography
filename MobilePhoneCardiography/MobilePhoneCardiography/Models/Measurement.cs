@@ -13,5 +13,6 @@ namespace MobilePhoneCardiography.Models
         public int PatientID { get; set; }
         public int HealthProffesionalID { get; set; }
         public int PlacementOfDevice { get; set; }
+
     }
 }
