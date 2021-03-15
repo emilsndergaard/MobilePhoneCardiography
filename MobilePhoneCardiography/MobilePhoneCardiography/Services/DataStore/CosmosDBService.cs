@@ -6,6 +6,7 @@ using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using System;
 using System.Diagnostics;
+using Microsoft.Azure.Documents.Linq;
 using MobilePhoneCardiography.Models.Json;
 
 
@@ -167,7 +168,7 @@ namespace MobilePhoneCardiography.Services.DataStore
         /// <summary> 
         /// </summary>
         /// <returns></returns>
-        public async static Task CompleteToDoItem(object item)
+        public async static Task CompleteToDoItem(IJsonDatabase item)
         {
             //item.ProbabilityPercentage = true;
 
@@ -200,7 +201,7 @@ namespace MobilePhoneCardiography.Services.DataStore
             if (!await Initialize())
                 return;
 
-            var docUri = UriFactory.CreateDocumentUri(databaseName, collectionName, item);
+            var docUri = UriFactory.CreateDocumentUri(databaseName, collectionName, item.id);
             await docClient.DeleteDocumentAsync(docUri);
         }
         // </DeleteToDoItem>  
@@ -214,7 +215,7 @@ namespace MobilePhoneCardiography.Services.DataStore
             if (!await Initialize())
                 return;
 
-            var docUri = UriFactory.CreateDocumentUri(databaseName, collectionName, item);
+            var docUri = UriFactory.CreateDocumentUri(databaseName, collectionName, item.id);
             await docClient.ReplaceDocumentAsync(docUri, item);
         }
         // </UpdateToDoItem>  

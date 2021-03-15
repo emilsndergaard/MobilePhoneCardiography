@@ -68,5 +68,6 @@ namespace MobilePhoneCardiography.Models.Json
 
         // Ved ikke om den her skal være her
         public event PropertyChangingEventHandler PropertyChanging;
+        public string id { get; set; }
     }
 }

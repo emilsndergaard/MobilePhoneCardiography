@@ -2,6 +2,6 @@
 {
     public interface IJsonDatabase
     {
-
+        public string id { get; set; }
     }
 }
